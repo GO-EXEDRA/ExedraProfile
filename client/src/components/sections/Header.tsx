@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, User, LogIn } from "lucide-react";
+import { Menu, CalendarDays, GraduationCapIcon, LightbulbIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ExedraLogo from "../ExedraLogo";
 import ThemeToggle from "../ThemeToggle";
-import { Link } from "wouter";
 
 interface HeaderProps {
   onNavigate: {
@@ -67,31 +66,37 @@ export default function Header({ onNavigate }: HeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <ExedraLogo />
+          <div className="flex items-center">
+            <ExedraLogo />
+            <span className={`hidden sm:inline-block ml-2 font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+              Premium Advisory
+            </span>
+          </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <NavLink onClick={onNavigate.howItWorks}>How It Works</NavLink>
-            <NavLink onClick={onNavigate.projects}>Projects</NavLink>
-            <NavLink onClick={onNavigate.testimonials}>Testimonials</NavLink>
-            <NavLink onClick={onNavigate.contact}>Contact</NavLink>
+            <NavLink onClick={onNavigate.howItWorks}>
+              <div className="flex items-center">
+                <LightbulbIcon className="w-4 h-4 mr-1.5" />
+                <span>How It Works</span>
+              </div>
+            </NavLink>
+            <NavLink onClick={onNavigate.projects}>
+              <div className="flex items-center">
+                <GraduationCapIcon className="w-4 h-4 mr-1.5" />
+                <span>Our Services</span>
+              </div>
+            </NavLink>
+            <NavLink onClick={onNavigate.testimonials}>
+              <div className="flex items-center">
+                <span>Success Stories</span>
+              </div>
+            </NavLink>
           </nav>
           
           <div className="flex items-center space-x-4">
             {/* Theme Toggle */}
             <ThemeToggle />
-            
-            {/* Sign In Button */}
-            <Button
-              variant="ghost"
-              className="hidden sm:flex items-center space-x-2 hover:bg-primary/10"
-              asChild
-            >
-              <Link href="/signin">
-                <LogIn className="w-4 h-4 mr-2" />
-                <span>Sign In</span>
-              </Link>
-            </Button>
             
             {/* Mobile Menu Button */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -116,23 +121,25 @@ export default function Header({ onNavigate }: HeaderProps) {
                 } backdrop-blur-md`}
               >
                 <div className="flex flex-col space-y-5 mt-8">
-                  <NavLink onClick={onNavigate.howItWorks}>How It Works</NavLink>
-                  <NavLink onClick={onNavigate.projects}>Projects</NavLink>
-                  <NavLink onClick={onNavigate.testimonials}>Testimonials</NavLink>
-                  <NavLink onClick={onNavigate.contact}>Contact</NavLink>
+                  <NavLink onClick={onNavigate.howItWorks}>
+                    <div className="flex items-center">
+                      <LightbulbIcon className="w-5 h-5 mr-2" />
+                      <span>How It Works</span>
+                    </div>
+                  </NavLink>
+                  <NavLink onClick={onNavigate.projects}>
+                    <div className="flex items-center">
+                      <GraduationCapIcon className="w-5 h-5 mr-2" />
+                      <span>Our Services</span>
+                    </div>
+                  </NavLink>
+                  <NavLink onClick={onNavigate.testimonials}>
+                    <div className="flex items-center">
+                      <span>Success Stories</span>
+                    </div>
+                  </NavLink>
                   
                   <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-800">
-                    <Button
-                      variant="outline"
-                      className="w-full justify-start mb-3"
-                      asChild
-                    >
-                      <Link href="/signin">
-                        <LogIn className="w-4 h-4 mr-2" />
-                        <span>Sign In</span>
-                      </Link>
-                    </Button>
-                    
                     <Button
                       onClick={() => {
                         setIsMenuOpen(false);
@@ -140,12 +147,12 @@ export default function Header({ onNavigate }: HeaderProps) {
                       }}
                       className={`w-full btn-modern ${
                         isDarkMode 
-                          ? 'bg-secondary hover:bg-secondary/90' 
-                          : 'bg-secondary hover:bg-secondary/90'
+                          ? 'bg-primary hover:bg-primary/90' 
+                          : 'bg-primary hover:bg-primary/90'
                       }`}
                     >
-                      <User className="w-4 h-4 mr-2" />
-                      <span>Sign Up</span>
+                      <CalendarDays className="w-4 h-4 mr-2" />
+                      <span>Schedule Consultation</span>
                     </Button>
                   </div>
                 </div>
@@ -162,11 +169,11 @@ export default function Header({ onNavigate }: HeaderProps) {
                 <Button
                   onClick={onNavigate.contact}
                   className={`hidden sm:inline-flex items-center btn-modern ${
-                    isDarkMode ? 'bg-secondary hover:bg-secondary/90' : 'bg-secondary hover:bg-secondary/90'
+                    isDarkMode ? 'bg-primary hover:bg-primary/90' : 'bg-primary hover:bg-primary/90'
                   }`}
                 >
-                  <User className="w-4 h-4 mr-2" />
-                  <span>Sign Up</span>
+                  <CalendarDays className="w-4 h-4 mr-2" />
+                  <span>Schedule Consultation</span>
                 </Button>
               </motion.div>
             </AnimatePresence>

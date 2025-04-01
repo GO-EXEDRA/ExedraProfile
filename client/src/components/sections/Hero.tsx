@@ -1,6 +1,6 @@
 import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ArrowRight, Star, Play } from "lucide-react";
+import { CalendarDays, Star, ArrowRight, GraduationCapIcon, BriefcaseIcon, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeIn, slideUp, popAnimation } from "@/lib/animations";
 
@@ -13,22 +13,23 @@ export default function Hero({ onGetStarted }: HeroProps) {
   
   return (
     <section 
-      className={`relative overflow-hidden min-h-[90vh] transition-colors duration-300 ${
+      className={`relative overflow-hidden min-h-[95vh] transition-colors duration-300 ${
         isDarkMode 
           ? 'bg-gray-900' 
           : 'bg-gradient-to-br from-amber-50 via-orange-50 to-white'
       }`}
     >
       {/* Background grid pattern */}
-      <div className="absolute inset-0 bg-grid-pattern"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
       
       {/* Background decorative elements */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-primary rounded-full opacity-10 blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-secondary rounded-full opacity-5 blur-3xl"></div>
+      <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary rounded-full opacity-10 blur-3xl"></div>
+      <div className="absolute top-[30%] left-[20%] w-32 h-32 bg-yellow-500 rounded-full opacity-5 blur-2xl"></div>
       
       {/* Floating elements for visual interest */}
       <motion.div 
-        className="absolute top-40 right-[20%] w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/20"
+        className="absolute top-40 right-[20%] w-16 h-16 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/20"
         animate={{ 
           y: [0, -20, 0],
           rotate: [0, 10, 0]
@@ -41,7 +42,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
       />
       
       <motion.div 
-        className="absolute bottom-40 left-[15%] w-16 h-16 rounded-full bg-secondary/20 backdrop-blur-md border border-secondary/20"
+        className="absolute bottom-40 left-[15%] w-20 h-20 rounded-full bg-secondary/20 backdrop-blur-md border border-secondary/20"
         animate={{ 
           y: [0, 30, 0],
           x: [0, 15, 0]
@@ -54,14 +55,14 @@ export default function Hero({ onGetStarted }: HeroProps) {
       />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div 
             className="max-w-xl"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
           >
-            {/* Testimonial badge */}
+            {/* Premium badge */}
             <motion.div 
               className={`inline-flex items-center px-4 py-2 rounded-full mb-8 glass-card ${
                 isDarkMode 
@@ -73,7 +74,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
             >
               <Star className="w-4 h-4 text-yellow-500 mr-2" />
               <span className={`text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Trusted by 5,000+ students across the US
+                Premium Extracurricular Advisory Service
               </span>
             </motion.div>
             
@@ -83,13 +84,13 @@ export default function Hero({ onGetStarted }: HeroProps) {
               }`}
               variants={slideUp}
             >
-              Make Your College App
+              Schedule Your
               <span className={`block text-transparent bg-clip-text bg-gradient-to-r ${
                 isDarkMode 
                   ? 'from-primary via-primary to-secondary' 
                   : 'from-primary via-orange-500 to-secondary'
               }`}>
-                Absolutely Extraordinary
+                College Profile Consultation
               </span>
             </motion.h1>
             
@@ -98,57 +99,78 @@ export default function Hero({ onGetStarted }: HeroProps) {
               variants={slideUp}
               custom={1}
             >
-              Exedra helps high school students develop impressive extracurricular profiles and 
-              passion projects that stand out on college applications. Build meaningful experiences 
-              that showcase your unique abilities.
+              Work with our expert advisors to develop impressive extracurricular profiles and 
+              passion projects that make your college application stand out. Meet with us to create 
+              your personalized strategy.
             </motion.p>
             
             <motion.div 
-              className="flex flex-wrap gap-4 mb-12"
+              className="mb-12"
               variants={slideUp}
               custom={2}
             >
               <Button
                 size="lg"
                 onClick={onGetStarted}
-                className={`btn-modern px-8 py-6 shadow-lg text-lg ${
+                className={`btn-modern w-full sm:w-auto px-8 py-7 shadow-lg text-lg ${
                   isDarkMode 
                     ? 'bg-primary hover:bg-primary/90' 
                     : 'bg-primary hover:bg-primary/90'
                 }`}
               >
-                <span>Start Building Today</span>
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={onGetStarted}
-                className={`btn-modern px-6 py-6 flex items-center justify-center text-lg ${
-                  isDarkMode 
-                    ? 'bg-gray-800/50 text-white hover:bg-gray-700/70 border-gray-700' 
-                    : 'bg-white/80 text-gray-900 hover:bg-gray-100/90 border-gray-200'
-                }`}
-              >
-                <Play className="mr-2 w-5 h-5 text-primary" fill="currentColor" />
-                <span>Watch Demo</span>
+                <CalendarDays className="mr-3 w-5 h-5" />
+                <span>Schedule Your Free Consultation</span>
+                <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
             </motion.div>
             
-            {/* Stats or social proof */}
+            {/* Premium service highlights */}
             <motion.div 
-              className="grid grid-cols-3 gap-4"
+              className="space-y-3"
               variants={slideUp}
               custom={3}
+            >
+              <div className="flex items-center">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-full ${isDarkMode ? 'bg-primary/20' : 'bg-primary/10'} mr-3`}>
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <p className={`font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+                  Personalized extracurricular planning
+                </p>
+              </div>
+              
+              <div className="flex items-center">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-full ${isDarkMode ? 'bg-primary/20' : 'bg-primary/10'} mr-3`}>
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <p className={`font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+                  Expert advisors from top universities
+                </p>
+              </div>
+              
+              <div className="flex items-center">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-full ${isDarkMode ? 'bg-primary/20' : 'bg-primary/10'} mr-3`}>
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <p className={`font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+                  Strategic profile development for competitive schools
+                </p>
+              </div>
+            </motion.div>
+            
+            {/* Stats */}
+            <motion.div 
+              className="grid grid-cols-3 gap-4 mt-12 border-t border-gray-200 dark:border-gray-800 pt-6"
+              variants={slideUp}
+              custom={4}
             >
               <div className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
                 <div className="text-2xl font-bold text-primary">94%</div>
                 <div className="text-sm">Admission Rate</div>
               </div>
               <div className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
-                <div className="text-2xl font-bold text-primary">300+</div>
-                <div className="text-sm">Project Templates</div>
+                <div className="text-2xl font-bold text-primary">2,500+</div>
+                <div className="text-sm">Consultations</div>
               </div>
               <div className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
                 <div className="text-2xl font-bold text-primary">100+</div>
@@ -157,6 +179,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
             </motion.div>
           </motion.div>
           
+          {/* Right side with premium design elements */}
           <motion.div 
             className="relative hidden md:block"
             initial="hidden"
@@ -164,23 +187,70 @@ export default function Hero({ onGetStarted }: HeroProps) {
             variants={fadeIn}
             custom={1}
           >
-            {/* Main image with modern, floating card effect */}
-            <div className={`relative z-10 rounded-2xl overflow-hidden shadow-2xl ${
-              isDarkMode ? 'shadow-gray-900/60' : 'shadow-orange-900/10'
-            }`}>
-              <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                alt="Students collaborating on a project" 
-                className="w-full aspect-[4/3] object-cover"
-              />
+            {/* Main premium card */}
+            <div className={`relative rounded-2xl overflow-hidden border-2 ${
+              isDarkMode 
+                ? 'bg-gray-800/70 border-primary/30 shadow-lg shadow-primary/10' 
+                : 'bg-white/90 border-primary/20 shadow-xl shadow-orange-900/5'
+            } backdrop-blur-sm p-8 z-20`}>
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
               
-              {/* Colored overlay for brand consistency */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10"></div>
+              <div className="text-center mb-8">
+                <GraduationCapIcon className={`w-16 h-16 mx-auto mb-4 ${isDarkMode ? 'text-primary/80' : 'text-primary'}`} />
+                <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Premium College Advising
+                </h3>
+                <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Develop a stand-out application with our expert guidance
+                </p>
+              </div>
+              
+              <div className={`rounded-xl p-6 mb-6 ${
+                isDarkMode ? 'bg-gray-900/70' : 'bg-gray-50/80'
+              }`}>
+                <h4 className={`text-lg font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  What We Offer:
+                </h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle2 className={`w-5 h-5 mt-0.5 mr-3 ${isDarkMode ? 'text-primary/80' : 'text-primary'}`} />
+                    <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
+                      <span className="font-medium">Personalized Strategy Sessions</span> - Tailored to your unique strengths and goals
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className={`w-5 h-5 mt-0.5 mr-3 ${isDarkMode ? 'text-primary/80' : 'text-primary'}`} />
+                    <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
+                      <span className="font-medium">Project Development</span> - Create meaningful extracurriculars that impress admissions
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className={`w-5 h-5 mt-0.5 mr-3 ${isDarkMode ? 'text-primary/80' : 'text-primary'}`} />
+                    <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>
+                      <span className="font-medium">Application Positioning</span> - Learn how to present your achievements effectively
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="text-center">
+                <Button
+                  onClick={onGetStarted}
+                  className={`btn-modern w-full py-6 text-lg ${
+                    isDarkMode 
+                      ? 'bg-primary hover:bg-primary/90' 
+                      : 'bg-primary hover:bg-primary/90'
+                  }`}
+                >
+                  <CalendarDays className="mr-2 w-5 h-5" />
+                  <span>Schedule Now</span>
+                </Button>
+              </div>
             </div>
             
-            {/* Decorative floating cards */}
+            {/* Decorative floating elements */}
             <motion.div 
-              className={`absolute top-[10%] -left-16 z-20 p-4 rounded-xl max-w-[240px] glass-card ${
+              className={`absolute top-[5%] -left-16 z-10 p-4 rounded-xl max-w-[240px] glass-card ${
                 isDarkMode 
                   ? 'bg-gray-800/80 border-gray-700' 
                   : 'bg-white/90 border-gray-200'
@@ -190,19 +260,19 @@ export default function Hero({ onGetStarted }: HeroProps) {
             >
               <div className="flex items-center mb-2">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-3">
-                  <Star className="w-4 h-4 text-primary" />
+                  <BriefcaseIcon className="w-4 h-4 text-primary" />
                 </div>
                 <h4 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Ivy League Ready
+                  Premium Results
                 </h4>
               </div>
               <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Our students have been accepted to all Ivy League universities
+                Over 90% of our students get accepted to their top-choice schools
               </p>
             </motion.div>
             
             <motion.div 
-              className={`absolute -bottom-10 right-10 z-20 p-4 rounded-xl max-w-[240px] glass-card ${
+              className={`absolute -bottom-10 right-10 z-10 p-4 rounded-xl max-w-[240px] glass-card ${
                 isDarkMode 
                   ? 'bg-gray-800/80 border-gray-700' 
                   : 'bg-white/90 border-gray-200'
@@ -211,17 +281,17 @@ export default function Hero({ onGetStarted }: HeroProps) {
               transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
             >
               <p className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                "Exedra helped me develop a research project that got me into Stanford!"
+                "My advisor helped me develop a research project that got me into Stanford!"
               </p>
               <p className={`text-sm mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                — Sophia Chen, Class of 2023
+                — Michael Chen, Class of 2023
               </p>
             </motion.div>
           </motion.div>
         </div>
       </div>
       
-      {/* Wave divider */}
+      {/* Premium wave divider */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className={`w-full h-16 ${
           isDarkMode ? 'fill-gray-800' : 'fill-white'
