@@ -16,7 +16,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
       className={`relative overflow-hidden min-h-[95vh] transition-colors duration-300 ${
         isDarkMode 
           ? 'bg-gray-900' 
-          : 'bg-gradient-to-br from-red-50 via-rose-50 to-white'
+          : 'bg-gradient-to-br from-amber-50 via-orange-50 to-white'
       }`}
     >
       {/* Background grid pattern */}
@@ -88,7 +88,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
               <span className={`block text-transparent bg-clip-text bg-gradient-to-r ${
                 isDarkMode 
                   ? 'from-primary via-primary to-secondary' 
-                  : 'from-primary via-rose-500 to-secondary'
+                  : 'from-primary via-orange-500 to-secondary'
               }`}>
                 College Profile Consultation
               </span>
@@ -191,7 +191,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
             <div className={`relative rounded-2xl overflow-hidden border-2 ${
               isDarkMode 
                 ? 'bg-gray-800/70 border-primary/30 shadow-lg shadow-primary/10' 
-                : 'bg-white/90 border-primary/20 shadow-xl shadow-red-900/10'
+                : 'bg-white/90 border-primary/20 shadow-xl shadow-orange-900/10'
             } backdrop-blur-sm p-8 z-20`}>
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
               
