@@ -36,37 +36,38 @@
   }
 
   .dark {
-    /* Dark blue-gray background */
-    --background: 224 71% 4%;
+    /* Enhanced deep dark background for premium look */
+    --background: 220 40% 2.5%;
     --foreground: 213 31% 91%;
     
-    /* Dark card style */
-    --card: 224 71% 4%;
+    /* Premium dark card style */
+    --card: 220 40% 2.5%;
     --card-foreground: 213 31% 91%;
     
-    --popover: 224 71% 4%;
+    --popover: 220 40% 2.5%;
     --popover-foreground: 215 20.2% 90%;
     
-    /* Vibrant orange in dark mode */
+    /* Vibrant orange in dark mode - slightly richer */
     --primary: 30 95% 60%;
     --primary-foreground: 210 40% 98%;
     
-    /* Dark mode secondary - subtle orange */
-    --secondary: 20 89% 48%;
+    /* Enhanced premium secondary */
+    --secondary: 22 90% 50%;
     --secondary-foreground: 210 40% 98%;
     
-    /* Dark accent = subtle dark orange */
-    --accent: 25 70% 20%;
+    /* Premium dark accent */
+    --accent: 25 70% 15%;
     --accent-foreground: 210 40% 98%;
     
-    --muted: 223 47% 11%;
+    --muted: 223 47% 8%;
     --muted-foreground: 215 20.2% 65.1%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
+    /* Premium subtle borders */
+    --border: 215 27.9% 12%;
+    --input: 215 27.9% 12%;
     --ring: 30 95% 60%;
   }
 
@@ -92,12 +93,14 @@
     background-size: 20px 20px;
   }
   
-  /* Dark theme grid pattern */
+  /* Enhanced premium dark theme grid pattern */
   .dark .bg-grid-pattern {
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-    background-size: 20px 20px;
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      radial-gradient(rgba(255, 165, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 40px 40px;
+    background-position: 0 0, 0 0, 10px 10px;
   }
   
   /* Modern button styles */
@@ -123,5 +126,43 @@
   /* Modern navbar styles */
   .navbar-modern {
     @apply backdrop-blur-md border-b border-opacity-30 dark:border-opacity-30 shadow-sm;
+  }
+
+  /* Premium glass card for dark mode */
+  .premium-card {
+    @apply bg-gray-800/80 border border-primary/20 shadow-lg backdrop-blur-xl rounded-xl;
+  }
+
+  /* Premium gradient text effect */
+  .premium-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary to-secondary;
+  }
+
+  /* Premium button with shine effect */
+  .premium-button {
+    @apply rounded-xl bg-primary text-white shadow-lg shadow-primary/20 font-medium relative overflow-hidden;
+    position: relative;
+  }
+  
+  .premium-button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 70%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    transition: all 0.8s;
+  }
+  
+  .premium-button:hover::after {
+    left: 100%;
+    transition: all 0.8s;
   }
 }

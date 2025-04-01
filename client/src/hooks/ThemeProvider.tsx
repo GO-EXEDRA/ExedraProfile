@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -6,42 +6,30 @@ type ThemeProviderProps = {
 
 type ThemeContextType = {
   isDarkMode: boolean;
-  toggleTheme: () => void;
+  toggleTheme: () => void; // Kept for API compatibility
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  // Check if dark mode is stored in local storage or use system preference
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-        return storedTheme === 'dark';
-      }
-      // Check for system preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
+  // Always use dark mode
+  const isDarkMode = true;
 
-  // Update local storage and document class when dark mode changes
+  // Apply dark mode on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      localStorage.setItem('theme', 'dark');
       
-      // Update the data-theme attribute for tailwind
+      // Ensure dark mode is always applied
       const root = window.document.documentElement;
-      if (isDarkMode) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
+      root.classList.add('dark');
     }
-  }, [isDarkMode]);
+  }, []);
 
+  // Keep the function for API compatibility but it doesn't change the theme
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    // Does nothing - we're always in dark mode
+    console.log('Premium design is dark mode only');
   };
 
   return (
