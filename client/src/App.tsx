@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/hooks/use-theme";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 // Import pages
 import Home from "@/pages/Home";
@@ -22,9 +23,9 @@ import Calendar from "@/pages/Calendar";
 
 function Router() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-gray-900">
       <Navigation />
-      <div className="pt-16"> {/* Add padding to account for fixed navbar */}
+      <main className="flex-grow pt-16"> {/* Add padding to account for fixed navbar */}
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/pricing" component={Pricing} />
@@ -38,8 +39,9 @@ function Router() {
           <Route path="/payment" component={Payment} />
           <Route component={NotFound} />
         </Switch>
-      </div>
-    </>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

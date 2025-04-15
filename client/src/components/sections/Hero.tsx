@@ -288,7 +288,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
             
             {/* Enhanced decorative floating elements with premium styling and better positioning */}
             <motion.div 
-              className="absolute top-[10%] left-[-80px] z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/80 border border-primary/20 shadow-lg shadow-primary/5 backdrop-blur-xl"
+              className="absolute top-[15%] left-0 z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/90 border border-primary/30 shadow-xl shadow-primary/10 backdrop-blur-xl"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
             >

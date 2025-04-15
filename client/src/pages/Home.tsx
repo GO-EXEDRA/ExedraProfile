@@ -16,7 +16,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarDays, Clock, Users, CheckCircle2, BriefcaseIcon, GraduationCapIcon, AwardIcon } from "lucide-react";
 
-import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -111,15 +110,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-white text-gray-800'} transition-colors duration-300`}>
-      <Header 
-        onNavigate={{
-          howItWorks: () => scrollToSection(howItWorksRef),
-          projects: () => scrollToSection(featuresRef),
-          testimonials: () => scrollToSection(schedulingRef),
-          contact: () => scrollToSection(schedulingRef)
-        }}
-      />
+    <div className={`min-h-screen bg-gray-900 text-gray-300 transition-colors duration-300`}>
       
       <main>
         <Hero onGetStarted={() => scrollToSection(schedulingRef)} />
