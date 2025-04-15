@@ -75,8 +75,11 @@ export default function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   
-  // Get unique categories
-  const categories = ['All', ...new Set(projectsData.map(project => project.category.name))];
+  // Get unique categories 
+  const uniqueCategories = projectsData
+    .map(project => project.category.name)
+    .filter((value, index, self) => self.indexOf(value) === index);
+  const categories = ['All', ...uniqueCategories];
   
   // Filter projects based on search and category
   const filteredProjects = projectsData.filter(project => {

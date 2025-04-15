@@ -103,6 +103,12 @@
     background-position: 0 0, 0 0, 10px 10px;
   }
   
+  /* Premium dot pattern background */
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
   /* Modern button styles */
   .btn-modern {
     @apply rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
