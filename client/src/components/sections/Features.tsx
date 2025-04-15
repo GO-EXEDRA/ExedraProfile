@@ -26,17 +26,23 @@ function FeatureCard({ icon, title, description, color, bgColor, index }: Featur
       animate={isInView ? "visible" : "hidden"}
       variants={fadeInUp}
       custom={index}
-      className={`rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
-        isDarkMode ? 'bg-gray-800' : 'bg-white'
-      }`}
+      className="relative rounded-xl p-6 transform transition-all duration-300 hover:-translate-y-2 bg-gray-800/70 border border-gray-700 backdrop-blur-sm shadow-lg overflow-hidden group hover:border-primary/30 hover:shadow-primary/5"
     >
-      <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
-        {icon}
+      {/* Subtle glow effects */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-transparent opacity-30"></div>
+      <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-700"></div>
+      
+      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 ${bgColor} group-hover:scale-110 transition-transform duration-300`}>
+        <div className="text-primary group-hover:text-white transition-colors duration-300">
+          {icon}
+        </div>
       </div>
-      <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+      
+      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300">
         {title}
       </h3>
-      <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+      
+      <p className="text-gray-300">
         {description}
       </p>
     </motion.div>
@@ -73,24 +79,39 @@ export default function Features() {
   ];
   
   return (
-    <section className={`py-16 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 overflow-hidden bg-gray-900">
+      {/* Enhanced premium background elements */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-30"></div>
+      <div className="absolute top-[20%] right-[10%] w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+      <div className="absolute bottom-[10%] left-[5%] w-72 h-72 rounded-full bg-blue-500/10 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <motion.h2 
-            className={`text-3xl font-bold mb-4 font-accent ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+          <motion.span 
+            className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Why Students Choose Exedra
+            Why Choose Us
+          </motion.span>
+          
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-4 font-accent text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Exedra Advantage</span>
           </motion.h2>
+          
           <motion.p 
-            className={`max-w-2xl mx-auto text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}
+            className="max-w-2xl mx-auto text-lg text-gray-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Our platform is designed specifically to help you build impressive college applications through meaningful extracurricular activities.
+            Our premium platform is designed specifically to help you build impressive college applications through meaningful extracurricular activities.
           </motion.p>
         </div>
         
@@ -112,6 +133,34 @@ export default function Features() {
               bgColor={feature.bgColor}
             />
           ))}
+        </motion.div>
+        
+        {/* Added premium statistic cards */}
+        <motion.div 
+          className="grid md:grid-cols-4 gap-6 mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-6 text-center backdrop-blur-sm">
+            <div className="text-4xl font-bold text-primary mb-2">94%</div>
+            <p className="text-gray-400">Admission Success Rate</p>
+          </div>
+          
+          <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-6 text-center backdrop-blur-sm">
+            <div className="text-4xl font-bold text-primary mb-2">800+</div>
+            <p className="text-gray-400">Projects Completed</p>
+          </div>
+          
+          <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-6 text-center backdrop-blur-sm">
+            <div className="text-4xl font-bold text-primary mb-2">50+</div>
+            <p className="text-gray-400">Expert Advisors</p>
+          </div>
+          
+          <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-6 text-center backdrop-blur-sm">
+            <div className="text-4xl font-bold text-primary mb-2">12M+</div>
+            <p className="text-gray-400">Scholarship Dollars</p>
+          </div>
         </motion.div>
       </div>
     </section>

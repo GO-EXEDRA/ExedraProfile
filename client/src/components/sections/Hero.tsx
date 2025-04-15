@@ -13,19 +13,20 @@ export default function Hero({ onGetStarted }: HeroProps) {
   
   return (
     <section 
-      className="relative overflow-hidden min-h-[95vh] transition-colors duration-300 bg-gray-900"
+      className="relative overflow-visible min-h-[95vh] transition-colors duration-300 bg-gray-900"
     >
-      {/* Background grid pattern */}
+      {/* Background patterns with proper positioning */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+      <div className="absolute inset-0 bg-dot-pattern opacity-30"></div>
       
-      {/* Enhanced premium background elements with proper positioning */}
-      <div className="absolute top-[10%] right-[10%] w-80 h-80 bg-primary rounded-full opacity-20 blur-3xl"></div>
-      <div className="absolute bottom-[5%] left-[5%] w-96 h-96 bg-secondary rounded-full opacity-20 blur-3xl"></div>
-      <div className="absolute top-[30%] left-[25%] w-48 h-48 bg-yellow-500 rounded-full opacity-10 blur-2xl"></div>
+      {/* Enhanced premium background elements with improved positioning and containment */}
+      <div className="absolute top-[10%] right-[10%] w-80 h-80 bg-primary rounded-full opacity-15 blur-3xl -z-10"></div>
+      <div className="absolute bottom-[5%] left-[5%] w-96 h-96 bg-secondary rounded-full opacity-15 blur-3xl -z-10"></div>
+      <div className="absolute top-[30%] left-[25%] w-48 h-48 bg-yellow-500 rounded-full opacity-10 blur-2xl -z-10"></div>
       
-      {/* Additional premium glow effects - fixed positioning */}
-      <div className="absolute top-[65%] right-[20%] w-64 h-64 bg-primary/20 rounded-full opacity-15 blur-3xl"></div>
-      <div className="absolute bottom-[35%] left-[35%] w-40 h-40 bg-blue-500 rounded-full opacity-10 blur-2xl"></div>
+      {/* Additional premium glow effects with improved positioning and containment */}
+      <div className="absolute top-[65%] right-[20%] w-64 h-64 bg-primary/20 rounded-full opacity-20 blur-3xl -z-10"></div>
+      <div className="absolute bottom-[35%] left-[35%] w-40 h-40 bg-blue-500 rounded-full opacity-10 blur-2xl -z-10"></div>
       
       {/* Subtle gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-30"></div>
@@ -223,6 +224,10 @@ export default function Hero({ onGetStarted }: HeroProps) {
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-yellow-500 to-secondary"></div>
               <div className="absolute top-2 left-0 w-full h-1 bg-gradient-to-r from-primary via-yellow-500 to-secondary opacity-30"></div>
               
+              {/* Enhanced inner glow effects */}
+              <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-primary/30 blur-3xl"></div>
+              <div className="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-secondary/20 blur-3xl"></div>
+              
               {/* Animated premium glow effect */}
               <motion.div 
                 className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-primary/30 blur-3xl"
@@ -281,12 +286,13 @@ export default function Hero({ onGetStarted }: HeroProps) {
               </div>
             </div>
             
-            {/* Enhanced decorative floating elements with premium styling */}
+            {/* Enhanced decorative floating elements with premium styling and better positioning */}
             <motion.div 
-              className="absolute top-[5%] -left-16 z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/80 border border-primary/20 shadow-lg backdrop-blur-xl"
+              className="absolute top-[10%] left-[-80px] z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/80 border border-primary/20 shadow-lg shadow-primary/5 backdrop-blur-xl"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
             >
+              <div className="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-primary/30 blur-md"></div>
               <div className="flex items-center mb-2">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-3">
                   <BriefcaseIcon className="w-4 h-4 text-primary" />
@@ -301,11 +307,12 @@ export default function Hero({ onGetStarted }: HeroProps) {
             </motion.div>
             
             <motion.div 
-              className="absolute -bottom-10 right-10 z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/80 border border-primary/20 shadow-lg backdrop-blur-xl"
+              className="absolute -bottom-4 right-12 z-10 p-4 rounded-xl max-w-[240px] glass-card bg-gray-800/80 border border-primary/20 shadow-lg shadow-primary/5 backdrop-blur-xl"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
             >
               <div className="absolute top-0 right-0 w-full h-0.5 bg-gradient-to-l from-primary/40 to-transparent"></div>
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-secondary/30 blur-md"></div>
               <p className="font-medium text-white">
                 "My advisor helped me develop a research project that got me into Stanford!"
               </p>
