@@ -18,14 +18,17 @@ export default function Hero({ onGetStarted }: HeroProps) {
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
       
-      {/* Enhanced premium background elements */}
-      <div className="absolute top-20 right-20 w-80 h-80 bg-primary rounded-full opacity-15 blur-3xl"></div>
-      <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary rounded-full opacity-15 blur-3xl"></div>
-      <div className="absolute top-[30%] left-[20%] w-48 h-48 bg-yellow-500 rounded-full opacity-10 blur-2xl"></div>
+      {/* Enhanced premium background elements with proper positioning */}
+      <div className="absolute top-[10%] right-[10%] w-80 h-80 bg-primary rounded-full opacity-20 blur-3xl"></div>
+      <div className="absolute bottom-[5%] left-[5%] w-96 h-96 bg-secondary rounded-full opacity-20 blur-3xl"></div>
+      <div className="absolute top-[30%] left-[25%] w-48 h-48 bg-yellow-500 rounded-full opacity-10 blur-2xl"></div>
       
-      {/* Additional premium glow effects */}
-      <div className="absolute top-[60%] right-[30%] w-64 h-64 bg-primary/20 rounded-full opacity-10 blur-3xl"></div>
-      <div className="absolute bottom-[40%] left-[40%] w-32 h-32 bg-blue-500 rounded-full opacity-5 blur-2xl"></div>
+      {/* Additional premium glow effects - fixed positioning */}
+      <div className="absolute top-[65%] right-[20%] w-64 h-64 bg-primary/20 rounded-full opacity-15 blur-3xl"></div>
+      <div className="absolute bottom-[35%] left-[35%] w-40 h-40 bg-blue-500 rounded-full opacity-10 blur-2xl"></div>
+      
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-30"></div>
       
       {/* Animated star field for premium effect */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
@@ -51,9 +54,9 @@ export default function Hero({ onGetStarted }: HeroProps) {
         ))}
       </div>
       
-      {/* Floating elements for visual interest */}
+      {/* Enhanced floating elements for visual interest - improved positioning */}
       <motion.div 
-        className="absolute top-40 right-[20%] w-16 h-16 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/20"
+        className="absolute top-[15%] right-[15%] w-16 h-16 rounded-xl bg-primary/30 backdrop-blur-md border border-primary/30 shadow-lg"
         animate={{ 
           y: [0, -20, 0],
           rotate: [0, 10, 0]
@@ -66,7 +69,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
       />
       
       <motion.div 
-        className="absolute bottom-40 left-[15%] w-20 h-20 rounded-full bg-secondary/20 backdrop-blur-md border border-secondary/20"
+        className="absolute bottom-[20%] left-[15%] w-20 h-20 rounded-full bg-secondary/30 backdrop-blur-md border border-secondary/30 shadow-lg"
         animate={{ 
           y: [0, 30, 0],
           x: [0, 15, 0]
@@ -75,6 +78,23 @@ export default function Hero({ onGetStarted }: HeroProps) {
           duration: 8,
           repeat: Infinity,
           repeatType: "reverse"
+        }}
+      />
+      
+      {/* Additional floating diamond shape */}
+      <motion.div 
+        className="absolute top-[50%] left-[10%] w-12 h-12 bg-primary/20 backdrop-blur-md border border-primary/20 shadow-lg"
+        style={{ transform: "rotate(45deg)" }}
+        animate={{ 
+          y: [0, -15, 0],
+          x: [0, 10, 0],
+          rotate: [45, 55, 45]
+        }}
+        transition={{ 
+          duration: 7,
+          repeat: Infinity,
+          repeatType: "reverse",
+          delay: 1
         }}
       />
       
